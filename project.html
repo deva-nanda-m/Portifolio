@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Lived</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="project-container">
+        <h1 class="main-heading">Days Lived Calculator</h1>
+        <p class="prompt-para">Enter your date of birth :</p>
+        <input type = date class="date-input" id="dob-input">
+        <button type=button class ="fetch-result" onclick="calculateDate()">Calculate</button>
+        <div class="result-text" id="result">  <!-- id for js get element by id is used by js to get the text-->
+
+        </div>
+        <script>
+            function calculateDate(){
+                const dob=document.getElementById('dob-input').value;
+                console.log(dob);
+                if(!dob){
+                    document.getElementById('result').innerText="Please select a date";
+                    return;//return required for js
+                }
+                const dateobj=new Date(dob);//convert into date
+                const today=new Date();
+                console.log(today);
+                const datediff=Math.abs(today-dateobj);
+                console.log(datediff);
+                const daydiff=Math.ceil(datediff/(1000*60*60*24));
+                document.getElementById('result').innerText=`You have lived for approximately ${daydiff.toLocaleString()} days`;
+                return;
+            }
+        </script>
+     </div>
+</body>
+</html>
